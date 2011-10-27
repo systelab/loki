@@ -1011,6 +1011,17 @@ template <typename AP, typename Id, typename P1 >
             return this->OnUnknownType(id);
         }
 
+		std::vector<IdentifierType> RegisteredIds()
+        {
+            std::vector<IdentifierType> ids;
+            for(typename IdToProductMap::iterator it = associations_.begin();
+                it != associations_.end(); ++it)
+            {
+                ids.push_back(it->first);
+            }
+            return ids;
+        }
+
     private:
         typedef AssocVector<IdentifierType, ProductCreator> IdToProductMap;
         IdToProductMap associations_;
