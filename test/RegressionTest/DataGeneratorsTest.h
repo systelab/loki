@@ -8,6 +8,7 @@
 
 #include <typeinfo>
 #include <loki/DataGenerators.h>
+#include <iterator>
 
 struct DataGeneratorsTest : public Test
   {
