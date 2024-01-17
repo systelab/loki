@@ -79,7 +79,7 @@ public:
 };
 
 
-int main(int argc, char* argv[])
+int main(int /*argc*/, char* /*argv[]*/)
 {
     Example *example = new Example();
      SetLongevity<Example, void (*)(Example*)>(example, 1, &Loki::Private::Deleter<Example>::Delete);
