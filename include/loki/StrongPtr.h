@@ -1678,9 +1678,6 @@ namespace std
         template < class > class CNP
     >
     struct less< Loki::StrongPtr< T, S, OP, CP, KP, RP, DP, CNP > >
-        : public binary_function<
-            Loki::StrongPtr< T, S, OP, CP, KP, RP, DP, CNP >,
-            Loki::StrongPtr< T, S, OP, CP, KP, RP, DP, CNP >, bool >
     {
         bool operator () (
             const Loki::StrongPtr< T, S, OP, CP, KP, RP, DP, CNP > & lhs,

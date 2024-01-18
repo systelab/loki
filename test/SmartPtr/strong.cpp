@@ -326,8 +326,8 @@ typedef Loki::StrongPtr< const BaseClass, false, TwoRefCounts, DisallowConversio
 
 void DoWeakLeakTest( void )
 {
-    const unsigned int ctorCount = Counted::GetCtorCount();
-    const unsigned int dtorCount = Counted::GetDtorCount();
+    const unsigned int ctorCount = Counted::GetCtorCount(); (void)ctorCount;
+    const unsigned int dtorCount = Counted::GetDtorCount(); (void)dtorCount;
     assert( Counted::AllDestroyed() );
 
     {
@@ -1084,7 +1084,7 @@ void friend_handling2()
     std::vector<Ptr> vec;
     std::sort( vec.begin(), vec.end(), Compare );
     std::nth_element( vec.begin(), vec.begin(), vec.end(), Compare );
-    std::search( vec.begin(), vec.end(),
+    auto it = std::search( vec.begin(), vec.end(),
         vec.begin(), vec.end(), Compare );
     Ptr a, b;
     Compare( a, b );
@@ -1195,7 +1195,7 @@ struct Policy
 protected:
 	Policy() {}
 	Policy(const Policy&) {}
-	int i;
+	int i = 0;
 };
 
 template<int I, class P>

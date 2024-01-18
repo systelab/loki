@@ -119,7 +119,7 @@ bool operator<(const AVTestClass& lhs, const AVTestClass& rhs)
 // str_less
 ///////////////////////////////////////////////////////////////////////////////
 
-struct str_less : public std::binary_function<const char*, const char*, bool> {
+struct str_less {
     bool operator()(const char* x, const char* y) const {
         return strcmp(x, y) < 0;
     }

@@ -1241,13 +1241,13 @@ namespace Loki
 
         // Member functions
 
-        Functor() : spImpl_(0)
+        Functor()
         {}
         
         Functor(const Functor& rhs) : spImpl_(Impl::Clone(rhs.spImpl_.get()))
         {}
         
-        Functor(std::auto_ptr<Impl> spImpl) : spImpl_(spImpl)
+        Functor(std::unique_ptr<Impl> spImpl) : spImpl_(spImpl)
         {}
         
         template <typename Fun>
@@ -1260,17 +1260,17 @@ namespace Loki
         : spImpl_(new MemFunHandler<Functor, PtrObj, MemFn>(p, memFn))
         {}
 
-        typedef Impl * (std::auto_ptr<Impl>::*unspecified_bool_type)() const;
+        typedef Impl * (std::unique_ptr<Impl>::*unspecified_bool_type)() const;
 
         operator unspecified_bool_type() const
         {
-            return spImpl_.get() ? &std::auto_ptr<Impl>::get : 0;
+            return spImpl_.get() ? &std::unique_ptr<Impl>::get : 0;
         }
 
         Functor& operator=(const Functor& rhs)
         {
             Functor copy(rhs);
-            // swap auto_ptrs by hand
+            // swap unique_ptrs by hand
             Impl* p = spImpl_.release();
             spImpl_.reset(copy.spImpl_.release());
             copy.spImpl_.reset(p);
@@ -1425,7 +1425,7 @@ namespace Loki
         }
 
     private:
-        std::auto_ptr<Impl> spImpl_;
+        std::unique_ptr<Impl> spImpl_ = nullptr;
     };
     
 

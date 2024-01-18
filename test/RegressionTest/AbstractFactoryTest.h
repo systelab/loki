@@ -71,8 +71,8 @@ public:
 
     bool r;
 
-    std::auto_ptr<AbstractEnemyFactory> easyFactory(new EasyLevelEnemyFactory);
-    std::auto_ptr<AbstractEnemyFactory> hardFactory(new HardLevelEnemyFactory);
+    std::unique_ptr<AbstractEnemyFactory> easyFactory(new EasyLevelEnemyFactory);
+    std::unique_ptr<AbstractEnemyFactory> hardFactory(new HardLevelEnemyFactory);
 
     Soldier *s;
 
