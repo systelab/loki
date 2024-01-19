@@ -1081,7 +1081,7 @@ void friend_handling()
     std::vector<Ptr> vec;
     std::sort( vec.begin(), vec.end(), Compare );
     std::nth_element( vec.begin(), vec.begin(), vec.end(), Compare );
-    std::search( vec.begin(), vec.end(),
+    auto it = std::search( vec.begin(), vec.end(),
         vec.begin(), vec.end(), Compare );
     Ptr a, b;
     Compare( a, b );

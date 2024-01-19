@@ -796,7 +796,7 @@ void MakePool( SomeThingPool & target )
 // ----------------------------------------------------------------------------
 
 /// @struct SomeThingComparator Binary-functor for comparing 2 SomeThing's.
-struct SomeThingComparator : std::binary_function< volatile SomeThing *, volatile SomeThing *, bool >
+struct SomeThingComparator
 {
     /// Returns true if left string < right string.
 	inline bool operator ()( volatile SomeThing * lhs, volatile SomeThing * rhs ) const

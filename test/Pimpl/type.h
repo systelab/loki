@@ -91,7 +91,7 @@ struct E;
 
 typedef SmartPtr<ImplOf<E> >      LokiPtr;
 typedef ConstPropPtr<ImplOf<E> >  CPropPtr;
-typedef std::auto_ptr<ImplOf<E> > StdAutoPtr;
+typedef std::unique_ptr<ImplOf<E> > StdAutoPtr;
 
 #ifdef TEST_WITH_BOOST
     typedef boost::shared_ptr<ImplOf<E> > BoostPtr;

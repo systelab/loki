@@ -32,7 +32,9 @@ using namespace Loki;
 using std::cout;
 using std::endl;
 
- 
+
+#ifdef LOKI_ENABLE_NEW_FACTORY_CODE
+
 ////////////////////////////////////////////
 // Object to create: Product
 // Constructor with 0 and 2 arguments
@@ -241,9 +243,12 @@ void heap_debug()
 void heap_debug()
 {}
 #endif
+#endif //LOKI_ENABLE_NEW_FACTORY_CODE
 
 int main()
 {
+#ifdef LOKI_ENABLE_NEW_FACTORY_CODE
+
     heap_debug();
 
     reg();
@@ -300,5 +305,6 @@ int main()
 #endif
 
     return EXIT_SUCCESS;
+#endif //LOKI_ENABLE_NEW_FACTORY_CODE
 }
 
