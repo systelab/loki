@@ -775,7 +775,7 @@ static void test_call_obj(function<int (int, int)> f)
     assert(!f.empty());
 }
 
-static void test_call_cref(const function<int (int, int)>& f)
+static void test_call_cref(const function<int (int, int)>& f )
 {
     assert(!f.empty());
 }

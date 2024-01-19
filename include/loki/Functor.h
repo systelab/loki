@@ -1616,7 +1616,7 @@ namespace Loki
         typedef typename Private::BinderFirstTraits<Fctor>::BoundFunctorType
             Outgoing;
         
-        return Outgoing(std::auto_ptr<typename Outgoing::Impl>(
+        return Outgoing(std::unique_ptr<typename Outgoing::Impl>(
             new BinderFirst<Fctor>(fun, bound)));
     }
 
@@ -1778,7 +1778,7 @@ namespace Loki
         const Fun1& fun1,
         const Fun2& fun2)
     {
-        return Fun2(std::auto_ptr<typename Fun2::Impl>(
+        return Fun2(std::unique_ptr<typename Fun2::Impl>(
             new Chainer<Fun1, Fun2>(fun1, fun2)));
     }
 

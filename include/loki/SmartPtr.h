@@ -700,7 +700,7 @@ namespace Loki
 ///
 ///  \ingroup  SmartPointerOwnershipGroup
 ///  Implementation of the OwnershipPolicy used by SmartPtr
-///  Implements destructive copy semantics (a la std::auto_ptr)
+///  Implements destructive copy semantics (a la std::unique_ptr)
 ////////////////////////////////////////////////////////////////////////////////
 
     template <class P>

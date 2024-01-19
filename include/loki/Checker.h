@@ -90,7 +90,7 @@ public:
 
     inline bool Check( const Host * ) const
     {
-        const bool okay = ( !::std::uncaught_exception() );
+        const bool okay = ( 0 == ::std::uncaught_exceptions() );
         assert( okay );
         return okay;
     }
@@ -122,7 +122,7 @@ public:
 
     inline bool Check( const Host * host ) const
     {
-        const bool okay = ( !::std::uncaught_exception() )
+        const bool okay = ( 0 == std::uncaught_exceptions() )
             || ( m_compare == *host );
         assert( okay );
         return okay;
@@ -157,7 +157,7 @@ public:
 
     inline bool Check( const Host * host ) const
     {
-        bool okay = ( !::std::uncaught_exception() );
+        bool okay = ( 0 == std::uncaught_exceptions() );
         assert( okay );
         okay = ( m_compare == *host );
         assert( okay );
@@ -374,7 +374,7 @@ class CheckStaticForNoThrow
 public:
     inline bool Check( void )
     {
-        const bool okay = !::std::uncaught_exception();
+        const bool okay = (0 == std::uncaught_exceptions());
         assert( okay );
         return okay;
     }

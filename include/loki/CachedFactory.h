@@ -184,7 +184,7 @@ namespace Loki
                 {
                     D( cout << "Cleaning time less than " << currentTime - timeValidity << endl; )
                     D( displayVector(); )
-                    Vector::iterator newEnd = remove_if(m_vTimes.begin(), m_vTimes.end(), bind2nd(less<clock_t>(), currentTime - timeValidity));
+                    Vector::iterator newEnd = remove_if(m_vTimes.begin(), m_vTimes.end(), std::bind(less<clock_t>(), std::placeholders::_2, currentTime - timeValidity));
                     // this rearrangement might be costly, consider optimization
                     // by calling cleanVector in less used onCreate function
                     // ... although it may not be correct
@@ -416,7 +416,7 @@ namespace Loki
     	typedef typename EH::HitMapItr					HitMapItr;
     	
     	// update the counter
-		template<class T> struct updateCounter : public std::unary_function<T, void>
+		template<class T> struct updateCounter
 		{
 			updateCounter(const DT& key): key_(key){}
 			void operator()(T x)
@@ -761,13 +761,13 @@ namespace Loki
         }
 		
 		// delete the object
-		template<class T> struct deleteObject : public std::unary_function<T, void>
+		template<class T> struct deleteObject
 		{
 			void operator()(T x){ delete x; }
 		};
 
 		// delete the objects in the vector
-		template<class T> struct deleteVectorObjects : public std::unary_function<T, void>
+		template<class T> struct deleteVectorObjects
 		{
 			void operator()(T x){
 				ObjVector &vec(x.second);
@@ -776,7 +776,7 @@ namespace Loki
 		};
 
 		// delete the keys of the map
-		template<class T> struct deleteMapKeys : public std::unary_function<T, void>
+		template<class T> struct deleteMapKeys
 		{
 			void operator()(T x){ delete x.first; }
 		};            
@@ -793,7 +793,7 @@ namespace Loki
             for(objVectorItr=fromKeyToObjVector.begin();objVectorItr!=fromKeyToObjVector.end();++objVectorItr)
             {
                 ObjVector &v((*objVectorItr).second);
-                objItr = remove_if(v.begin(), v.end(), std::bind2nd(std::equal_to<AbstractProduct*>(), pProduct));
+                objItr = remove_if(v.begin(), v.end(), std::bind(std::equal_to<AbstractProduct*>(), pProduct));
                 if(objItr != v.end()) // we found the vector containing pProduct and removed it
                 {
                     onDestroy(pProduct); // warning policies we are about to destroy an object
