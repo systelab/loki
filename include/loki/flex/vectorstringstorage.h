@@ -86,7 +86,7 @@ public: // protected:
     typedef typename base::const_iterator const_iterator;
     typedef A allocator_type;
     typedef typename A::size_type size_type;
-    typedef typename A::reference reference;
+    typedef typename A::value_type& reference;
     
     VectorStringStorage(const VectorStringStorage& s) : base(s)
     { }

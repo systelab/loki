@@ -14,7 +14,7 @@
     <ProjectName>Checker</ProjectName>
     <ProjectGuid>{2148AAC5-5CE3-493E-8D82-439ABC2E8053}</ProjectGuid>
     <RootNamespace>Checker</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.20348.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">

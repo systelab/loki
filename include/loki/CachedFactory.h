@@ -182,9 +182,15 @@ namespace Loki
                 }
                 else
                 {
-                    D( cout << "Cleaning time less than " << currentTime - timeValidity << endl; )
-                    D( displayVector(); )
-                    Vector::iterator newEnd = remove_if(m_vTimes.begin(), m_vTimes.end(), std::bind(less<clock_t>(), std::placeholders::_2, currentTime - timeValidity));
+                    D(cout << "Cleaning time less than " << currentTime - timeValidity << endl; )
+                        D(displayVector(); )
+
+                        auto pred = [rhs = currentTime - timeValidity](auto const& lhs)
+                        {
+                            return lhs < rhs;
+                        };
+                        
+                        Vector::iterator newEnd = remove_if(m_vTimes.begin(), m_vTimes.end(), pred);
                     // this rearrangement might be costly, consider optimization
                     // by calling cleanVector in less used onCreate function
                     // ... although it may not be correct
@@ -505,7 +511,8 @@ namespace Loki
     	
     	void onDestroy(const DT& key){
     		using namespace std;
-            m_vKeys.erase(remove_if(m_vKeys.begin(), m_vKeys.end(), bind2nd(equal_to< DT >(), key)), m_vKeys.end());
+
+            m_vKeys.erase(remove_if(m_vKeys.begin(), m_vKeys.end(), [&key](const DT& element) {return (element == key); }), m_vKeys.end());
     	}
     	
     	// Implemented in Cache and redirected to the Storage Policy
@@ -793,7 +800,10 @@ namespace Loki
             for(objVectorItr=fromKeyToObjVector.begin();objVectorItr!=fromKeyToObjVector.end();++objVectorItr)
             {
                 ObjVector &v((*objVectorItr).second);
-                objItr = remove_if(v.begin(), v.end(), std::bind(std::equal_to<AbstractProduct*>(), pProduct));
+
+                auto pred = [&pProduct](const AbstractProduct* element) {return (element == pProduct); };
+
+                objItr = remove_if(v.begin(), v.end(), pred);
                 if(objItr != v.end()) // we found the vector containing pProduct and removed it
                 {
                     onDestroy(pProduct); // warning policies we are about to destroy an object

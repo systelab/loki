@@ -82,8 +82,7 @@ class AllocatorStringStorage : public A
 
     void* Alloc(size_type sz, const void* p = 0)
     {
-        return A::allocate(1 + (sz - 1) / sizeof(E), 
-            static_cast<const char*>(p));
+        return A::allocate(1 + (sz - 1) / sizeof(E));
     }
 
     void* Realloc(void* p, size_type oldSz, size_type newSz)
@@ -122,8 +121,8 @@ class AllocatorStringStorage : public A
 public:
     typedef E value_type;
     typedef A allocator_type;
-    typedef typename A::pointer iterator;
-    typedef typename A::const_pointer const_iterator;
+    typedef typename A::value_type* iterator;
+    typedef typename const A::value_type* const_iterator;
 
     AllocatorStringStorage() 
     : A(), pData_(0)
@@ -199,7 +198,7 @@ public:
     { return size_type(end() - begin()); }
 
     size_type max_size() const
-    { return A::max_size(); }
+    { return (static_cast<size_t>(-1) / sizeof(A)); } 
 
     size_type capacity() const
     { return size_type(pData_->pEndOfMem_ - pData_->buffer_); }

@@ -197,10 +197,10 @@ public:
     typedef typename A::size_type size_type;
     typedef typename A::difference_type difference_type;
     
-    typedef typename Storage::reference reference;
-    typedef typename A::const_reference const_reference;
-    typedef typename A::pointer pointer;
-    typedef typename A::const_pointer const_pointer;
+    typedef typename Storage::value_type& reference;
+    typedef typename const A::value_type& const_reference;
+    typedef typename A::value_type* pointer;
+    typedef typename const A::value_type* const_pointer;
     
     typedef typename Storage::iterator iterator;
     typedef typename Storage::const_iterator const_iterator;
