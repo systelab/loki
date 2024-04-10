@@ -123,6 +123,8 @@ struct str_less {
     bool operator()(const char* x, const char* y) const {
         return strcmp(x, y) < 0;
     }
+    typedef const char* _FIRST_ARGUMENT_TYPE_NAME;
+    typedef const char* _SECOND_ARGUMENT_TYPE_NAME;
 };
 
 ///////////////////////////////////////////////////////////////////////////////
