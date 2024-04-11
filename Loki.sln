@@ -34,7 +34,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DefaultAlloc", "test\SmallO
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SmartPtr", "test\SmartPtr\SmartPtr.vcxproj", "{D7AB4FEF-E7AF-443D-93A5-37F323F2042D}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MSVCUnitTest", "test\RegressionTest\MSVCUnitTest.vcxproj", "{79729949-F144-4098-BFE9-B6320E6AC3F6}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UnitTest", "test\RegressionTest\UnitTest.vcxproj", "{79729949-F144-4098-BFE9-B6320E6AC3F6}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Pimpl", "test\Pimpl\Pimpl.vcxproj", "{21D2B291-80F4-476C-A643-B8A7034DF95F}"
 	ProjectSection(ProjectDependencies) = postProject

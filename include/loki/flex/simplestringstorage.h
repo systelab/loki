@@ -123,7 +123,7 @@ public:
     typedef E* iterator;
     typedef const E* const_iterator;
     typedef A allocator_type;
-    typedef typename A::reference reference;
+    typedef typename A::value_type& reference;
 
     
     SimpleStringStorage(const SimpleStringStorage& rhs) 

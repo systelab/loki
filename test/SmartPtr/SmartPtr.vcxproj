@@ -18,7 +18,7 @@
     <ProjectName>SmartPtr</ProjectName>
     <ProjectGuid>{D7AB4FEF-E7AF-443D-93A5-37F323F2042D}</ProjectGuid>
     <RootNamespace>SmartPtr</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.20348.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_MultiThreaded|Win32'" Label="Configuration">
