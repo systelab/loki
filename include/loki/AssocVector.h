@@ -35,10 +35,11 @@ namespace Loki
         template <class Value, class C>
         class AssocVectorCompare : public C
         {
-            typedef std::pair<typename C::first_argument_type, Value>
-                Data;
-            typedef typename C::first_argument_type first_argument_type;
+            typedef C::_FIRST_ARGUMENT_TYPE_NAME first_argument_type;
+            typedef C::_SECOND_ARGUMENT_TYPE_NAME second_argument_type;
 
+            typedef std::pair<typename first_argument_type, Value>
+                Data;
         public:
             AssocVectorCompare()
             {}
@@ -96,20 +97,19 @@ namespace Loki
 
         typedef C key_compare;
         typedef A allocator_type;
-        typedef typename A::reference reference;
-        typedef typename A::const_reference const_reference;
+        typedef typename A::value_type& reference;
+        typedef typename const A::value_type& const_reference;
         typedef typename Base::iterator iterator;
         typedef typename Base::const_iterator const_iterator;
         typedef typename Base::size_type size_type;
         typedef typename Base::difference_type difference_type;
-        typedef typename A::pointer pointer;
-        typedef typename A::const_pointer const_pointer;
+        typedef typename A::value_type* pointer;
+        typedef typename const A::value_type* const_pointer;
         typedef typename Base::reverse_iterator reverse_iterator;
         typedef typename Base::const_reverse_iterator const_reverse_iterator;
 
         class value_compare
-            : public std::binary_function<value_type, value_type, bool>
-            , private key_compare
+            : private key_compare
         {
             friend class AssocVector;
         

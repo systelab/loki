@@ -15,9 +15,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectName>Factory</ProjectName>
-    <ProjectGuid>{925D5863-2F77-41B7-96F1-CC814762C40F}</ProjectGuid>
-    <RootNamespace>Factory</RootNamespace>
+    <ProjectName>OrderedStatic</ProjectName>
+    <ProjectGuid>{0DCBE03A-DAC7-4669-B29B-102D8F563736}</ProjectGuid>
+    <RootNamespace>OrderedStatic</RootNamespace>
     <Keyword>Win32Proj</Keyword>
     <WindowsTargetPlatformVersion>10.0.20348.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
@@ -72,7 +72,7 @@
       <AdditionalOptions>-wd4996 %(AdditionalOptions)</AdditionalOptions>
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>..\..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;_DEBUG; _SECURE_SCL=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE _SECURE_SCL=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -131,11 +131,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Factory.cpp" />
+    <ClCompile Include="..\..\src\OrderedStatic.cpp" />
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\include\loki\Factory.h" />
-    <ClInclude Include="..\..\include\loki\Functor.h" />
+    <ClInclude Include="..\..\include\loki\OrderedStatic.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\library.vcxproj">

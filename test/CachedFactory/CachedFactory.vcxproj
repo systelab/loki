@@ -15,9 +15,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectName>Factory</ProjectName>
-    <ProjectGuid>{925D5863-2F77-41B7-96F1-CC814762C40F}</ProjectGuid>
-    <RootNamespace>Factory</RootNamespace>
+    <ProjectName>CachedFactory</ProjectName>
+    <ProjectGuid>{8D186AB4-E544-42D6-B192-1AE2C946875E}</ProjectGuid>
+    <RootNamespace>CachedFactory</RootNamespace>
     <Keyword>Win32Proj</Keyword>
     <WindowsTargetPlatformVersion>10.0.20348.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
@@ -69,10 +69,10 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <AdditionalOptions>-wd4996 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>-wd4996 /permissive %(AdditionalOptions)</AdditionalOptions>
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>..\..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;_DEBUG; _SECURE_SCL=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE _SECURE_SCL=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -85,7 +85,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
       <DataExecutionPrevention />
-      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -93,10 +92,11 @@
       <Optimization>MaxSpeed</Optimization>
       <AdditionalIncludeDirectories>..\..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <PrecompiledHeader />
       <WarningLevel>Level4</WarningLevel>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalOptions>-wd4996 /permissive %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -106,7 +106,6 @@
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
       <DataExecutionPrevention />
       <TargetMachine>MachineX86</TargetMachine>
-      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_MultiThreaded|Win32'">
@@ -118,6 +117,7 @@
       <PrecompiledHeader />
       <WarningLevel>Level4</WarningLevel>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalOptions>-wd4996 /permissive %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -127,20 +127,16 @@
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
       <DataExecutionPrevention />
       <TargetMachine>MachineX86</TargetMachine>
-      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Factory.cpp" />
+    <ClInclude Include="..\..\include\loki\CachedFactory.h" />
+    <ClInclude Include="..\..\include\loki\Key.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\include\loki\Factory.h" />
-    <ClInclude Include="..\..\include\loki\Functor.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\src\library.vcxproj">
-      <Project>{cbdb8e7a-4286-4ae3-a190-ba33d7c53ff0}</Project>
-    </ProjectReference>
+    <ClCompile Include="..\..\src\Singleton.cpp" />
+    <ClCompile Include="..\..\src\SmallObj.cpp" />
+    <ClCompile Include="CachedFactoryTest.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -93,7 +93,7 @@ public:
     typedef typename Storage::const_iterator const_iterator;
     typedef typename Storage::allocator_type allocator_type;
     typedef typename allocator_type::size_type size_type;
-    typedef typename Storage::reference reference;
+    typedef typename Storage::value_type& reference;
     
 private:
     union

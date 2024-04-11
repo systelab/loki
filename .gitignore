@@ -1,0 +1,7 @@
+**/Debug/**/*.*
+**/Release/**/*.*
+**/Release_MultiThreaded/**/*.*
+**/.vs/**/*.*
+*.dll
+*.vcxproj.user
+lib/**/*.*

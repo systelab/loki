@@ -52,11 +52,14 @@ Test::tests_type Test::tests;
 #include "TypeTraitsTest.h"
 #include "TypeTraitsTest2.h"
 #include "SmartPtrTest.h"
-#include "FactoryTest.h"
+
 #include "FactoryParmTest.h"
 #include "AbstractFactoryTest.h"
 #include "FunctorTest.h"
 #include "DataGeneratorsTest.h"
+
+
+#include "FactoryTest.h"
 #include "AssocVectorTest.h"
 
 int main()

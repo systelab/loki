@@ -258,7 +258,9 @@ public:
     }
 
     size_type max_size() const
-    { return get_allocator().max_size(); }
+    { 
+        return (static_cast<size_t>(-1) / sizeof(allocator_type));
+    }
 
     size_type capacity() const
     { return Small() ? maxSmallString : GetStorage().capacity(); }
