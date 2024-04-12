@@ -102,7 +102,6 @@ namespace Loki
     };
 
 
-#define LOKI_ENABLE_NEW_FACTORY_CODE
 #ifdef LOKI_ENABLE_NEW_FACTORY_CODE
 
 
