@@ -61,6 +61,9 @@
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">loki_D</TargetName>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">loki</TargetName>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_MultiThreaded|Win32'">
+    <TargetName>loki</TargetName>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <AdditionalOptions>-wd4996 %(AdditionalOptions)</AdditionalOptions>
