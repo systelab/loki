@@ -1,2 +1,2 @@
-conan export-pkg . --name=loki --version=1.1.0 --profile:build=.conanprofile -s build_type=Debug
-conan export-pkg . --name=loki --version=1.1.0 --profile:build=.conanprofile -s build_type=Release
+conan export-pkg . --name=loki --version=1.1.0 --profile:host=.conanprofile -s build_type=Debug -of int
+conan export-pkg . --name=loki --version=1.1.0 --profile:host=.conanprofile -s build_type=Release -of int
