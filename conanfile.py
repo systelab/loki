@@ -19,12 +19,11 @@ class LokiConan(ConanFile):
         "Loki.sln"
     )
 
-    def build(self):
-        # Genera la toolchain (defines, runtime, etc.)
+    def generate(self):
         msbuild_tc = MSBuildToolchain(self)
         msbuild_tc.generate()
 
-        # Configuración de MSBuild
+    def build(self):
         msbuild = MSBuild(self)
 
         arch = str(self.settings.arch)
@@ -34,7 +33,7 @@ class LokiConan(ConanFile):
             raise ConanInvalidConfiguration(f"Loki does not support '{arch}' architecture")
 
         msbuild.build(
-            sln="Loki.sln",
+            sln=os.path.join(self.source_folder, "Loki.sln"),
             targets=["Library"]
         )
 
@@ -44,7 +43,7 @@ class LokiConan(ConanFile):
         else:
             binaries_folder = os.path.join(self.source_folder, "lib", "Release_MultiThreaded") 
             
-        copy(self, "*.h", dst=os.path.join(self.package_folder, "include", "loki"), src=os.path.join(self.source_folder, "include", "loki"))
+        copy(self, "*.h",   dst=os.path.join(self.package_folder, "include", "loki"), src=os.path.join(self.source_folder, "include", "loki"))
         copy(self, "*.lib", dst=os.path.join(self.package_folder, "lib"), src=binaries_folder)
         copy(self, "*.pdb", dst=os.path.join(self.package_folder, "lib"), src=binaries_folder)
 
