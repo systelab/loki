@@ -18,7 +18,11 @@ class LokiConan(ConanFile):
         "test/*",
         "Loki.sln",
         "!src/Debug/*",
-        "!src/Release/*"
+        "!src/Release/*",
+        "!test/*/Debug/*",
+        "!test/*/Release/*",
+        "!test/*/Win32/*",
+        "!test/*/x64/*"
     )
 
     def generate(self):
