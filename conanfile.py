@@ -36,7 +36,7 @@ class LokiConan(ConanFile):
 
         msbuild.build(
             sln=os.path.join(self.source_folder, "Loki.sln"),
-            targets=["Library"]
+            targets=["Library", "UnitTest"]
         )
 
     def package(self):
