@@ -43,7 +43,7 @@ class LokiConan(ConanFile):
         if self.settings.build_type == "Debug":
             binaries_folder = os.path.join(self.source_folder, "lib", "Debug") 
         else:
-            binaries_folder = os.path.join(self.source_folder, "lib", "Release_MultiThreaded") 
+            binaries_folder = os.path.join(self.source_folder, "lib", "Release") 
             
         copy(self, "*.h",   dst=os.path.join(self.package_folder, "include", "loki"), src=os.path.join(self.source_folder, "include", "loki"))
         copy(self, "*.lib", dst=os.path.join(self.package_folder, "lib"), src=binaries_folder)
