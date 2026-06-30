@@ -1,7 +1,7 @@
 from conan import ConanFile
 from conan.errors import ConanInvalidConfiguration
 from conan.tools.files import copy, collect_libs
-from conan.tools.microsoft import MSBuild, MSBuildToolchain, MSBuildDeps
+from conan.tools.microsoft import MSBuild, MSBuildToolchain
 import os
 
 class LokiConan(ConanFile):
@@ -16,7 +16,9 @@ class LokiConan(ConanFile):
         "src/*",
         "include/*",
         "test/*",
-        "Loki.sln"
+        "Loki.sln",
+        "!src/Debug/*",
+        "!src/Release/*"
     )
 
     def generate(self):
