@@ -1,7 +1,7 @@
 from conan import ConanFile
 from conan.errors import ConanInvalidConfiguration
 from conan.tools.files import copy, collect_libs
-from conan.tools.microsoft import MSBuild, MSBuildToolchain, MSBuildDeps
+from conan.tools.microsoft import MSBuild, MSBuildToolchain
 import os
 
 class LokiConan(ConanFile):
@@ -16,7 +16,13 @@ class LokiConan(ConanFile):
         "src/*",
         "include/*",
         "test/*",
-        "Loki.sln"
+        "Loki.sln",
+        "!src/Debug/*",
+        "!src/Release/*",
+        "!test/*/Debug/*",
+        "!test/*/Release/*",
+        "!test/*/Win32/*",
+        "!test/*/x64/*"
     )
 
     def generate(self):
@@ -34,14 +40,14 @@ class LokiConan(ConanFile):
 
         msbuild.build(
             sln=os.path.join(self.source_folder, "Loki.sln"),
-            targets=["Library"]
+            targets=["Library", "UnitTest"]
         )
 
     def package(self):
         if self.settings.build_type == "Debug":
             binaries_folder = os.path.join(self.source_folder, "lib", "Debug") 
         else:
-            binaries_folder = os.path.join(self.source_folder, "lib", "Release_MultiThreaded") 
+            binaries_folder = os.path.join(self.source_folder, "lib", "Release") 
             
         copy(self, "*.h",   dst=os.path.join(self.package_folder, "include", "loki"), src=os.path.join(self.source_folder, "include", "loki"))
         copy(self, "*.lib", dst=os.path.join(self.package_folder, "lib"), src=binaries_folder)
